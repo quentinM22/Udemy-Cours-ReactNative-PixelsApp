@@ -1,29 +1,40 @@
 import React from 'react';
-import { Button } from 'react-native';
-import {View, StyleSheet, Text} from 'react-native';
+import { FlatList, Image, View, Text } from 'react-native';
+
+
+import { globalStyles } from '../../styles/GlobalStyles';
+
+import DATA from '../data/data.json'
+
 
 const Home = (props) => {
+const data = DATA
+
+const renderProfiles = (data) => {
+    const item = data.item
+      return(
+        <View style={globalStyles.cardProfile}>
+            <Text style={globalStyles.title}>{item.name}</Text>
+            <Image source={{uri: item.img}} style={globalStyles.profileImg}/>
+            <View style={globalStyles.infoContainer}>
+                <Text>{item.country}</Text>
+                <Text>{item.totalImg}</Text>
+            </View>
+        </View>
+      )
+}
+
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Home</Text>
-            <Button onPress={() => props.navigation.navigate('Portfolio')} title='Portfolio'/>
-            <Button onPress={() => props.navigation.navigate('Photo')} title='Photo'/>
+        <View style={globalStyles.container}>
+            <FlatList
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={renderProfiles}
+            />
+
         </View>
     );
 }
 
-const styles = StyleSheet.create({
-    container:{
-        backgroundColor: "#f8c291",
-        flex:1,
-        justifyContent: 'center',
-        alignItems:'center',
-        height: "100%"
-    },
-    text:{
-        fontFamily: "IBMPlexMono-Bold",
-        fontSize: 25
-    }
-})
 
 export default Home;
