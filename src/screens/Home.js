@@ -1,35 +1,30 @@
-import React from 'react';
-import { FlatList, Image, View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { FlatList, Image, View, Text, Pressable } from 'react-native';
 
 
 import { globalStyles } from '../../styles/GlobalStyles';
 
 import DATA from '../data/data.json'
 
+import Color from '../../styles/Color';
+import PressableCard from '../components/PressableCard';
+
 
 const Home = (props) => {
 const data = DATA
 
-const renderProfiles = (data) => {
+const renderItem = (data) => {
     const item = data.item
       return(
-        <View style={globalStyles.cardProfile}>
-            <Text style={globalStyles.title}>{item.name}</Text>
-            <Image source={{uri: item.img}} style={globalStyles.profileImg}/>
-            <View style={globalStyles.infoContainer}>
-                <Text>{item.country}</Text>
-                <Text>{item.totalImg}</Text>
-            </View>
-        </View>
+        <PressableCard item={item} />
       )
 }
-
     return (
         <View style={globalStyles.container}>
             <FlatList
             data={data}
             keyExtractor={(item) => item.id}
-            renderItem={renderProfiles}
+            renderItem={renderItem}
             />
 
         </View>

@@ -3,8 +3,7 @@ import Color from './Color';
 
 export const globalStyles = StyleSheet.create({
     container:{
-
-        backgroundColor: "#70a1ff",
+        backgroundColor: "#778beb",
         flex:1,
         justifyContent: 'center',
         alignItems:'center',
@@ -14,7 +13,7 @@ export const globalStyles = StyleSheet.create({
         padding: 5,
         paddingHorizontal: 10,
         marginVertical: 10,
-        backgroundColor: Color.white,
+        // backgroundColor: Color.white,
         borderTopRightRadius: 15,
         borderBottomLeftRadius: 15,
     },
@@ -34,5 +33,13 @@ export const globalStyles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 10,
+    },
+    text:{
+        fontFamily: "IBMPlexMono-Regular",
+        fontSize: 16
+    },
+    alignCenter: {
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
