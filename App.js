@@ -22,6 +22,8 @@ import FAQ from './src/screens/FAQ';
 import Color from './styles/Color';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Selected from './src/screens/Selected';
+import { Provider } from 'react-redux';
+import store from "./src/RTK/store"
 
 SplashScreen.preventAutoHideAsync()
 const Stack = createNativeStackNavigator()
@@ -142,9 +144,11 @@ export default function App() {
   }
 
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <MyTabs />
     </NavigationContainer>
+    </Provider>
   )
 }
 
