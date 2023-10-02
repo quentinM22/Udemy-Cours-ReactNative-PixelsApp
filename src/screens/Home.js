@@ -9,29 +9,31 @@ import { globalStyles } from '../../styles/GlobalStyles';
 
 import Color from '../../styles/Color';
 import PressableCard from '../components/PressableCard';
+import NoData from '../components/NoData';
 
 
 
 const Home = (props) => {
-    const data = useSelector((state) => state.data.users);
+    const {selectCategories} = useSelector((state) => state.data);
 // const data = DATA
-    console.log(data);
 const renderItem = (data) => {
     const item = data.item
       return(
         <PressableCard item={item} />
       )
 }
-    return (
+    return selectCategories.length > 0 ? (
         <View style={globalStyles.container}>
             <FlatList
-            data={data}
+            data={selectCategories}
             keyExtractor={(item) => item.id}
             renderItem={renderItem}
             />
 
         </View>
-    );
+    ) : (
+        <NoData>Pas d'utilisateur à afficher.</NoData>
+    )
 }
 
 
