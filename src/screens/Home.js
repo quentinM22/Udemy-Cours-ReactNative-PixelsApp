@@ -63,7 +63,7 @@ const renderItem = (data) => {
                 onPress={ handleSettingModal}
                 style={styles.modalClose}
                 />
-                <Settings />
+                <Settings handleSettingModal={handleSettingModal}/>
                 </View>
                 </View>
             </Modal>
