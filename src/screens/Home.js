@@ -21,6 +21,7 @@ const Home = (props) => {
     const navigation = useNavigation()
     const {selectCategories} = useSelector((state) => state.data);
 // const data = DATA
+console.log(selectCategories);
 useLayoutEffect(()=>{
     navigation.setOptions({
         headerRight: () => (

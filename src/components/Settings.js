@@ -1,20 +1,24 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import {View, StyleSheet, Text, Button} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { addSelectCategories } from '../RTK/Slice/dataSlice';
 import { globalStyles } from '../../styles/GlobalStyles';
 import CustomSwitch from './CustomSwitch';
-import { useState } from 'react';
+
 
 const Settings = ({handleSettingModal}) => {
     const [isAnimal, setIsAnimal] = useState(true)
     const [isCars, setIsCars] = useState(true)
     const [isTravel, setIsTravel] = useState(true)
+    const dispatch = useDispatch()
+
     const saveSettings = useCallback(()=>{
         const saveSettings = {
             animals: isAnimal,
             travel: isTravel,
             cars: isCars
         }
-        console.log(saveSettings);
+        dispatch(addSelectCategories(saveSettings))
         handleSettingModal()
     }, [isAnimal,isCars,isTravel])
     
